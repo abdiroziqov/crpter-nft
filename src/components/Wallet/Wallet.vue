@@ -57,16 +57,25 @@
       data-aos-once="true"
     >
       <div class="tabs gap-16 flex justify-between pb-[120px] container pt-20">
+        <pre>{{ index }}</pre>
         <TabGroup>
-          <TabList class="hidden md:flex md:flex-col active:!border-none gap-10">
-            <Tab class="item flex gap-4 duration-300 hover:opacity-80 items-center mb-16 !outline-none">
+          <TabList
+            class="hidden md:flex md:flex-col active:!border-none gap-10"
+          >
+            <Tab
+              v-for="(item, index) of tabNavItems"
+              :key="index"
+              class="item flex gap-4 duration-300 items-center mb-16 !outline-none text-green-500"
+              :class="{ 'text-red-500': index === activeTab }"
+              @click="changeActiveTab(index)"
+            >
               <div class="p-5 bg-[#9757D7] rounded-[64px]">
-                <img src="@/assets/icon/wallet-icons.svg" alt="" />
+                <img :src="item.icon" alt="icon" />
               </div>
-              <h3 class="text1">Formatic</h3>
+              {{ item.name }}
             </Tab>
 
-            <Tab class="item flex gap-4 duration-300 hover:opacity-80 items-center mb-16 !outline-none">
+            <!-- <Tab class="item flex gap-4 duration-300 hover:opacity-80 items-center mb-16 !outline-none">
               <div class="p-5 bg-[#3772FF] rounded-[64px]">
                 <img src="@/assets/icon/wallet-icons.svg" alt="" />
               </div>
@@ -85,7 +94,7 @@
                 <img src="@/assets/icon/wallet-icons.svg" alt="" />
               </div>
               <h3 class="text1">Wallet Connect</h3>
-            </Tab>
+            </Tab> -->
           </TabList>
           <TabPanels>
             <TabPanel>
@@ -96,7 +105,13 @@
               <p class="text font-['poppins'] mt-2 mb-6">
                 Powered by UI8.Wallet
               </p>
-              <img src="@/assets/image/qr-code.png" alt="image" />
+              <div class="px-[67px] py-[83px] bg-[#F4F5F6] rounded-2xl">
+                <div
+                  class="p-[77px] bg-[#FCFCFD] rounded-xl border border-solid border-[#E6E8EC] shadow-[0px_64px_64px_-48px_rgba(31,47,70,0.12)]"
+                >
+                  <img src="@/assets/icon/barcode.png" alt="image" />
+                </div>
+              </div>
               <router-link to="#">
                 <WButton class="mt-6">Don’t have a wallet app?</WButton>
               </router-link>
@@ -114,16 +129,16 @@
                 src="@/assets/image/wallet-hero.png"
                 alt="image"
               />
-              <div class="flex gap-3 mt-10 mb-3 cursor-pointer">
+              <div class="flex gap-3 mt-10 mb-3">
                 <input id="check2" name="check2" type="checkbox" />
                 <label
                   for="check2"
-                  class="font-['poppins'] font-medium text-sm text-[#141416]"
+                  class="font-['poppins'] font-medium text-sm text-[#141416] cursor-pointer"
                   >I am at least 13 year old</label
                 >
               </div>
 
-              <div class="flex gap-3 cursor-pointer">
+              <div class="flex gap-3">
                 <input
                   type="checkbox"
                   id="check1"
@@ -132,7 +147,7 @@
                 />
                 <label
                   for="check1"
-                  class="font-['poppins'] font-medium text-sm text-[#141416]"
+                  class="font-['poppins'] font-medium text-sm text-[#141416] cursor-pointer"
                   >I agree Stack terms of service</label
                 >
               </div>
@@ -174,4 +189,30 @@
 <script setup>
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
 import WButton from "@/components/WButton";
+import { reactive, ref } from "vue";
+
+const tabNavItems = reactive([
+  {
+    name: "Formatic",
+    icon: require("@/assets/icon/wallet-icons.svg"),
+  },
+  {
+    name: "CoinbaseWallet",
+    icon: require("@/assets/icon/wallet-icons.svg"),
+  },
+  {
+    name: "MyEtherWallet",
+    icon: require("@/assets/icon/wallet-icons.svg"),
+  },
+  {
+    name: "WalletConnect",
+    icon: require("@/assets/icon/wallet-icons.svg"),
+  },
+]);
+
+const activeTab = ref(0);
+
+function changeActiveTab(newTab) {
+  activeTab.value = newTab;
+}
 </script>

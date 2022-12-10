@@ -13,7 +13,7 @@
           <div @click="showMenu = !showMenu" class="flex md:hidden">
             <button
               type="button"
-              class="text-gray-800 hover:text-gray-400 focus:outline-none focus:text-gray-400"
+              class="text-gray-800 hover:text-gray-400 focus:outline-none focus:text-gray-400 duration-300"
             >
               <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
                 <path
@@ -59,12 +59,12 @@
                   alt="icon"
                 />
                 <button
-            @click="clear"
-            class="btn hidden absolute right-4"
-            :class="tacos ? active : ''"
-          >
-            X
-          </button> 
+                  @click="clear"
+                  class="btn hidden absolute right-3"
+                  :class="tacos ? active : ''"
+                >
+                  X
+                </button>
               </div>
 
               <!-- notification -->
@@ -132,17 +132,19 @@
             v-model="tacos"
             type="text"
             placeholder="Search"
-            class="focus:border-[#3772FF] outline-none reative text-xs font-normal text-[#777E91] border-2 border-solid border-[#E6E8EC] rounded-lg pl-3 pr-[26px] py-[10px]"
+            class="focus:border-[#3772FF] outline-none reative text-xs font-normal text-[#777E91] border-2 border-solid border-[#E6E8EC] rounded-lg pl-3 pr-[26px] py-[10px] duration-300"
           />
+
           <img
             :class="tacos ? 'opacity-0' : 'opacity-1'"
-            class="absolute right-2"
+            class="absolute right-2 duration-300"
             src="@/assets/icon/search.svg"
             alt="icon"
           />
+
           <button
             @click="clear"
-            class="btn hidden absolute right-4"
+            class="btn hidden absolute right-3 duration-200"
             :class="tacos ? active : ''"
           >
             X

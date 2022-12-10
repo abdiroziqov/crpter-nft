@@ -55,7 +55,7 @@
             <input
               mail-to="mail.com"
               v-model="tacos"
-              class="relative pr-12 focus:border-[#3772FF] w-full outline-none border-2 border-solid px-[12px] py-4 border-[#E6E8EC] rounded-[90px] text-[#777E91] text-sm"
+              class="relative duration-300 pr-12 focus:border-[#3772FF] w-full outline-none border-2 border-solid px-[12px] py-4 border-[#E6E8EC] rounded-[90px] text-[#777E91] text-sm"
               placeholder="Enter your email"
               type="email"
               name="email"
@@ -64,13 +64,13 @@
             />
             <img
               :class="tacos ? 'opacity-0' : 'opacity-1'"
-              class="absolute right-3 p-1 w-8 h-8 bg-[#3772FF] rounded-[100px]"
+              class="duration-500 absolute right-3 p-1 w-8 h-8 bg-[#3772FF] rounded-[100px]"
               src="@/assets/icon/arrow-white.svg"
               alt="icon"
             />
             <button
               @click="clear"
-              class="btn hidden absolute right-3 p-1 w-8 h-8 bg-[#3772FF] rounded-[100px] text-white"
+              class="btn duration-300 hidden absolute right-3 p-1 w-8 h-8 bg-[#3772FF] rounded-[100px] text-white"
               :class="tacos ? active : ''"
             >
               X
@@ -128,5 +128,6 @@ li:hover {
 }
 .btn.active {
   display: block;
+  transition: all 0.3s linear;
 }
 </style>

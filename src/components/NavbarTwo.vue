@@ -108,17 +108,17 @@
                   v-model="tacos"
                   type="text"
                   placeholder="Search"
-                  class="focus:border-[#3772FF] outline-none w-full reative text-xs font-normal text-[#777E91] border-2 border-solid border-[#E6E8EC] rounded-lg pl-3 pr-[26px] py-[10px]"
+                  class=" duration-300 focus:border-[#3772FF] outline-none w-full reative text-xs font-normal text-[#777E91] border-2 border-solid border-[#E6E8EC] rounded-lg pl-3 pr-[26px] py-[10px]"
                 />
                 <img
                   :class="tacos ? 'opacity-0' : 'opacity-1'"
-                  class="absolute right-2"
+                  class="absolute right-2 duration-200 "
                   src="@/assets/icon/search.svg"
                   alt="icon"
                 />
                 <button
                   @click="clear"
-                  class="btn hidden absolute right-4"
+                  class="btn hidden absolute right-3 duration-300 "
                   :class="tacos ? active : ''"
                 >
                   X
@@ -178,17 +178,17 @@
             v-model="tacos"
             type="text"
             placeholder="Search"
-            class="focus:border-[#3772FF] outline-none reative text-xs font-normal text-[#777E91] border-2 border-solid border-[#E6E8EC] rounded-lg pl-3 pr-[26px] py-[10px]"
+            class="focus:border-[#3772FF] outline-none reative text-xs font-normal text-[#777E91]  duration-300 duration-300 border-2 border-solid border-[#E6E8EC] rounded-lg pl-3 pr-[26px] py-[10px]"
           />
           <img
             :class="tacos ? 'opacity-0' : 'opacity-1'"
-            class="absolute right-2"
+            class="absolute right-2  duration-300 duration-200"
             src="@/assets/icon/search.svg"
             alt="icon"
           />
           <button
             @click="clear"
-            class="btn hidden absolute right-4"
+            class="btn hidden absolute right-3  duration-300 duration-300"
             :class="tacos ? active : ''"
           >
             X

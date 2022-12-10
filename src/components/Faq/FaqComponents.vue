@@ -30,12 +30,16 @@
         <TabGroup>
           <TabList class="flex flex-col !border-none gap-10">
             <Tab
-              class="tab flex gap-4 items-center font-bold text-sm text-[#777E91] focus:text-[#23262F] hover:text-[#23262F] duration-300"
+              v-for="(item, index) of tabNavItems"
+              :key="index"
+              class="tab flex gap-4 items-center font-bold text-sm text-[#777E91] duration-300"
+              :class="{ 'text-[#23262F]': index === activeTab }"
+              @click="changeActiveTab(index)"
             >
-              <img src="@/assets/icon/faq-home.svg" alt="icon" />
-              General</Tab
-            >
-            <Tab
+              <img :src="item.icon" alt="icon" />
+              {{ item.name }}
+            </Tab>
+            <!-- <Tab
               class="tab flex gap-4 items-center font-bold text-sm text-[#777E91] focus:text-[#23262F] hover:text-[#23262F] duration-300"
             >
               <img src="@/assets/icon/faq-support.svg" alt="icon" />
@@ -52,7 +56,7 @@
             >
               <img src="@/assets/icon/faq-pen.svg" alt="icon" />
               Product</Tab
-            >
+            > -->
           </TabList>
           <TabPanels>
             <TabPanel>
@@ -153,8 +157,33 @@
 import SliderHotBid from "@/components/SliderHotBid";
 import Accordion from "@/components/Accordion";
 import WButton from "@/components/WButton";
-
+  import { reactive, ref } from "vue";
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
+
+const tabNavItems = reactive([
+  {
+    name: "General",
+    icon: require("@/assets/icon/faq-home.svg"),
+  },
+  {
+    name: "Support",
+    icon: require("@/assets/icon/faq-support.svg"),
+  },
+  {
+    name: "Hosting",
+    icon: require("@/assets/icon/faq-lighting.svg"),
+  },
+  {
+    name: "Product",
+    icon: require("@/assets/icon/faq-pen.svg"),
+  },
+]);
+
+const activeTab = ref(0);
+
+function changeActiveTab(newTab) {
+  activeTab.value = newTab;
+}
 </script>
 
 <style scoped>
